@@ -2,7 +2,8 @@ import { useState } from "react";
 import { AppInput } from "../AppInput/AppInput";
 
 export const RegisterForm = ({ onSubmit }) => {
-  const [userData, setUserData] = useState({ username: "", email: "", password: "" });
+  const initialValues = { username: "", email: "", password: "" }
+  const [userData, setUserData] = useState(initialValues);
 
   const handleChange = (event) => {
     setUserData({
@@ -12,17 +13,19 @@ export const RegisterForm = ({ onSubmit }) => {
   }
 
   const handleSubmit = () => {
-    event.preventDefault();
+    event.preventDefault(); // блокуємо дефолтну поведінку браузера
 
     onSubmit(userData); // передаємо зібрані дані в App
 
-    event.target.reset();
+    setUserData(initialValues) // скидаємо стан до початкових значень
+    event.target.reset(); // очищаємо поля форми
   }
 
 
   return (
     <>
-      <h1>Please, register</h1>
+      <h2>React Form</h2>
+      <h4>Please, register</h4>
       <form onSubmit={handleSubmit}>
         <AppInput label="Username" name="username" type= "text" required={true} value={userData.username} onChange={handleChange} />
         <AppInput label="Email" name="email" type= "email" required={true} value={userData.email} onChange={handleChange} />
