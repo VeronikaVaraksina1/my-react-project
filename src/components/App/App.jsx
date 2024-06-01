@@ -1,11 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ClassComponent } from "../ClassComponent/ClassComponent";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import SearchBox from "../SearchBox/SearchBox";
 import { FormikForm } from "../FormikForm/FormikForm";
 import { ModalInterval } from "../ModalInterval/ModalInterval";
+import { ArticlesList } from "../ArticlesList/ArticlesList";
+import axios from "axios";
 
 export const App = () => {
+
+  // Http request
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://hn.algolia.com/api/v1/search?query=react");
+        setArticles(response.data.hits);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   // RegisterForm
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +45,9 @@ export const App = () => {
 
   return (
     <>
+    {articles ? <ArticlesList articles={articles} /> : "Error"}
+    <hr />
+
     <h2>Classic component</h2>
     <p>Click to hide:</p>
     <ClassComponent />
