@@ -26,20 +26,30 @@ export const App = () => {
 
   return (
     <>
+    <h2>Classic component</h2>
+    <p>Click to hide:</p>
     <ClassComponent />
+    <hr />
 
+    <h2>React Form</h2>
     <RegisterForm onSubmit={confirmUserData} />
     {isOpen && <h2>Hello, {user.username}!</h2>}
+    <hr />
 
+    <h2>Search field: Control element</h2>
     <SearchBox valueInput={text} onSetInputText={setInputText} />
     <p>{text}</p>
+    <hr />
 
+    <h2>Formik</h2>
     <FormikForm setFormikData={setFormikData} />
     {formikData ? <p>Welcome to Contact Kingdom, {formikData.username}!</p> : null}
-    
+    <hr />
+
     <h2>useEffect & clear function</h2>
     <button onClick={() => setIsOpenInterval(!isOpenInterval)}>{isOpenInterval ? "Close" : "Open"}</button>
     {isOpenInterval ? <ModalInterval /> : null}
+    <hr />
     </>
   )
 };

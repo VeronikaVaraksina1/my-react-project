@@ -24,7 +24,6 @@ export const RegisterForm = ({ onSubmit }) => {
 
   return (
     <>
-      <h2>React Form</h2>
       <h4>Please, register</h4>
       <form onSubmit={handleSubmit}>
         <AppInput label="Username" name="username" type= "text" required={true} value={userData.username} onChange={handleChange} />

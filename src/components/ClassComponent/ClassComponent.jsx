@@ -30,7 +30,6 @@ export class ClassComponent extends React.Component {
 
   render() {
     return <>
-    <h2>Classic component</h2>
     {this.state.show ? <Greeting initialName="Everyone" onHide={() => {
       this.setState({show: false})
     }} /> : null }

@@ -5,7 +5,6 @@ export default function SearchBox({ valueInput, onSetInputText }) {
 
   return (
     <>
-    <h2>Control element</h2>
       <label htmlFor={searchId}>Search articles</label>
       <input type="text" name="query" id={searchId} value={valueInput} onChange={(e) => onSetInputText(e.target.value)} />
     </>

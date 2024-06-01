@@ -7,7 +7,6 @@ export const FormikForm = ({ setFormikData }) => {
 
   return (
     <>
-    <h2>Formik</h2>
       <Formik initialValues={{ username: "", email: "" }} onSubmit={(values, actions) => {
         console.log(values);
         setFormikData(values);
