@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ClassComponent } from "../ClassComponent/ClassComponent";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import SearchBox from "../SearchBox/SearchBox";
@@ -6,6 +6,7 @@ import { FormikForm } from "../FormikForm/FormikForm";
 import { ModalInterval } from "../ModalInterval/ModalInterval";
 import { ArticlesList } from "../ArticlesList/ArticlesList";
 import axios from "axios";
+import { UserContext } from "../../context";
 
 export const App = () => {
 
@@ -43,6 +44,9 @@ export const App = () => {
   // ButtonInterval
   const [isOpenInterval, setIsOpenInterval] = useState(false);
 
+  // useContext, а також імпортуємо створений контекст в main.jsx і передаємо його як аргумент для useContext
+  const { name } = useContext(UserContext);
+
   return (
     <>
     {articles ? <ArticlesList articles={articles} /> : "Error"}
@@ -72,6 +76,9 @@ export const App = () => {
     <button onClick={() => setIsOpenInterval(!isOpenInterval)}>{isOpenInterval ? "Close" : "Open"}</button>
     {isOpenInterval ? <ModalInterval /> : null}
     <hr />
+
+    <h2>useContext</h2>
+    <p>Name: {name}</p>
     </>
   )
 };
