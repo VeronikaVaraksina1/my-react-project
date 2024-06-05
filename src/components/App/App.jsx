@@ -7,6 +7,9 @@ import { ModalInterval } from "../ModalInterval/ModalInterval";
 import { ArticlesList } from "../ArticlesList/ArticlesList";
 import axios from "axios";
 import { UserContext } from "../../context";
+import { ProjectButton } from "../ProjectButton/ProjectButton";
+import { PasswordInputProject } from "../PasswordInputProject/PasswordInputProject";
+import { InputProject } from "../InputProject/InputProject";
 
 export const App = () => {
 
@@ -49,36 +52,47 @@ export const App = () => {
 
   return (
     <>
-    {articles ? <ArticlesList articles={articles} /> : "Error"}
-    <hr />
+      <InputProject type={"text"} name={"name"} placeholder={"Enter your name"} />
+      <InputProject type={"email"} name={"email"} placeholder={"Enter your email"} />
+      <hr />
 
-    <h2>Classic component</h2>
-    <p>Click to hide:</p>
-    <ClassComponent />
-    <hr />
+      <PasswordInputProject placeholder={"qwe"} />
+      <hr />
 
-    <h2>React Form</h2>
-    <RegisterForm onSubmit={confirmUserData} />
-    {isOpen && <h2>Hello, {user.username}!</h2>}
-    <hr />
+      <ProjectButton>Log In Now</ProjectButton>
+      <ProjectButton>Register Now</ProjectButton>
+      <hr />
 
-    <h2>Search field: Control element</h2>
-    <SearchBox valueInput={text} onSetInputText={setInputText} />
-    <p>{text}</p>
-    <hr />
+      {articles ? <ArticlesList articles={articles} /> : "Error"}
+      <hr />
 
-    <h2>Formik</h2>
-    <FormikForm setFormikData={setFormikData} />
-    {formikData ? <p>Welcome to Contact Kingdom, {formikData.username}!</p> : null}
-    <hr />
+      <h2>Classic component</h2>
+      <p>Click to hide:</p>
+      <ClassComponent />
+      <hr />
 
-    <h2>useEffect & clear function</h2>
-    <button onClick={() => setIsOpenInterval(!isOpenInterval)}>{isOpenInterval ? "Close" : "Open"}</button>
-    {isOpenInterval ? <ModalInterval /> : null}
-    <hr />
+      <h2>React Form</h2>
+      <RegisterForm onSubmit={confirmUserData} />
+      {isOpen && <h2>Hello, {user.username}!</h2>}
+      <hr />
 
-    <h2>useContext</h2>
-    <p>Name: {name}</p>
+      <h2>Search field: Control element</h2>
+      <SearchBox valueInput={text} onSetInputText={setInputText} />
+      <p>{text}</p>
+      <hr />
+
+      <h2>Formik</h2>
+      <FormikForm setFormikData={setFormikData} />
+      {formikData ? <p>Welcome to Contact Kingdom, {formikData.username}!</p> : null}
+      <hr />
+
+      <h2>useEffect & clear function</h2>
+      <button onClick={() => setIsOpenInterval(!isOpenInterval)}>{isOpenInterval ? "Close" : "Open"}</button>
+      {isOpenInterval ? <ModalInterval /> : null}
+      <hr />
+
+      <h2>useContext</h2>
+      <p>Name: {name}</p>
     </>
   )
 };
